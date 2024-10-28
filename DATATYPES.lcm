@@ -1,0 +1,13 @@
+package data;
+
+struct stu {
+  int32_t id;
+  int32_t req;
+  int32_t resp;
+  int32_t jsonSize;
+  int32_t payloadSize;
+  int32_t bodySize;
+  string ip;
+  string jsonBuff;
+  string payloadBuff;
+}
