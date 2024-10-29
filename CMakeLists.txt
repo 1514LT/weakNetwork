@@ -41,6 +41,8 @@ target_link_libraries(
   ${CMAKE_CURRENT_SOURCE_DIR}/lib_x86/libjsoncpp.so
   ${CMAKE_CURRENT_SOURCE_DIR}/lib_x86/libdata_shared.so
   ${CMAKE_CURRENT_SOURCE_DIR}/lib_x86/libz.so
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib_x86/libssl.so
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib_x86/libcrypto.so
 )
 endif()
 
