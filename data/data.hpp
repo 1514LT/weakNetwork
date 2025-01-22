@@ -5,12 +5,15 @@
 #include "include/json/json.h"
 #include "include/snappy/snappy.h"
 #include "include/zlib.h"
+#include "rsa/rsa.hpp"
+#include "aes/aes.hpp"
 
 #include <memory>
 #include <fstream>
 #include <iostream>
 #include <thread>
 #include <functional>
+#include <bitset>
 
 class Data
 {
@@ -25,6 +28,7 @@ public:
 
 public:
   std::shared_ptr<data::stu> getInterface();
+  void printBinary(const std::string& str);
 };
 
 

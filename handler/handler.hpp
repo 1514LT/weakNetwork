@@ -2,6 +2,7 @@
 #define HANDLER_HPP
 
 #include "data/data.hpp"
+#include "aes/aes.hpp"
 #include "include/lcm/lcm-cpp.hpp"
 #include <iostream>
 #include <memory>
@@ -18,6 +19,7 @@ public:
   void handleMessage(const lcm::ReceiveBuffer* rbuf,
                 const std::string& chan, 
                 const data::stu* msg);
+
 };
 
 #endif

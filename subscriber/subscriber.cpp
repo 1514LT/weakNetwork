@@ -1,4 +1,5 @@
 #include "subscriber.hpp"
+#include "publisher/publisher.hpp"
 
 Subscriber::Subscriber()
 {
@@ -15,7 +16,10 @@ bool Subscriber::init(std::string channel,FuncHandle fuc,Handler &handle)
   {
     return -1;
   }
-  lcm->subscribe(channel,fuc,&handle);
-  while(0 == lcm->handle());
-  return 0;
+  std::thread(([&]{
+    lcm->subscribe(channel,fuc,&handle);
+    while(0 == lcm->handle());
+  })).join();
+
+  return true;
 }

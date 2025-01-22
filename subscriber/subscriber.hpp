@@ -1,4 +1,7 @@
+#ifndef SUBSCRIBER_HPP
+#define SUBSCRIBER_HPP
 #include "handler/handler.hpp"
+#include "data/data.hpp"
 typedef void (Handler::*FuncHandle)(const lcm::ReceiveBuffer* rbuf,
                 const std::string& chan, 
                 const data::stu* msg);
@@ -10,7 +13,7 @@ private:
 public:
 
 public:
-  Subscriber(/* args */);
+  Subscriber();
   ~Subscriber();
 
 public:
@@ -18,3 +21,4 @@ public:
 };
 
 
+#endif

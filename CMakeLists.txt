@@ -6,6 +6,7 @@ include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/include
   ${CMAKE_CURRENT_SOURCE_DIR}/data
+  ${CMAKE_CURRENT_SOURCE_DIR}/aes
 )
 
 set(CMAKE_CXX_STANDARD 11)
@@ -19,6 +20,8 @@ add_library(
   ${CMAKE_CURRENT_SOURCE_DIR}/data/data.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/handler/handler.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/dataProcess.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/rsa/rsa.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/aes/aes.cpp
 
   ${CMAKE_CURRENT_SOURCE_DIR}/discover/discover.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/publisher/publisher.cpp
@@ -52,6 +55,8 @@ publisher
 subscriber
 discover
 test
+rsa
+aes
 )
 add_executable(
   ${_target} ${CMAKE_CURRENT_SOURCE_DIR}/${_target}/${_target}_main.cpp

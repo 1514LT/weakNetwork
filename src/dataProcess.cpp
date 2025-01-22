@@ -170,22 +170,32 @@ std::string JRLC::removeLineBreak(std::string &str)
   return str;
 }
 
-bool JRLC::check_and_create_directory(const std::string& dir_path) 
-{
-  struct stat info;
+bool JRLC::check_and_create_directory(const std::string& dir_path) {
+    size_t pos = 0;
+    std::string current_path;
+    struct stat info;
 
-  if (stat(dir_path.c_str(), &info) != 0)
-  {
-    return (mkdir(dir_path.c_str(), 0755) == 0);
-  } 
-  else if (info.st_mode & S_IFDIR) 
-  {
-    return true;
-  } 
-  else 
-  {
-    return false;
-  }
+    while ((pos = dir_path.find('/', pos)) != std::string::npos) {
+        current_path = dir_path.substr(0, pos++);
+        if (current_path.empty()) continue;
+
+        // Check if the directory exists
+        if (stat(current_path.c_str(), &info) != 0) {
+            // Directory does not exist; try to create it
+            if (mkdir(current_path.c_str(), 0755) != 0 && errno != EEXIST) {
+                return false; // Failed to create directory
+            }
+        } else if (!(info.st_mode & S_IFDIR)) {
+            return false; // Path exists but is not a directory
+        }
+    }
+
+    // Create the final directory in the path
+    if (stat(dir_path.c_str(), &info) != 0) {
+        return (mkdir(dir_path.c_str(), 0755) == 0 || errno == EEXIST);
+    }
+
+    return (info.st_mode & S_IFDIR);
 }
 
 std::string JRLC::getUserPath()

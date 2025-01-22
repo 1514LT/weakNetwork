@@ -4,10 +4,17 @@ struct stu {
   int32_t id;
   int32_t req;
   int32_t resp;
+  string ip;
+  int8_t key[1024];
+  int8_t vi[1024];
+  m_pack pack;
+}
+
+struct m_pack 
+{
   int32_t jsonSize;
   int32_t payloadSize;
+  int8_t jsonBuff[2048000];
+  int8_t payloadBuff[2048000];
   int32_t bodySize;
-  string ip;
-  string jsonBuff;
-  string payloadBuff;
 }
